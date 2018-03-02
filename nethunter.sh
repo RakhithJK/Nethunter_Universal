@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo      -----------------------------------------
-echo      ----------- Made By:madScript -----------
+echo      ----- Made By:madScript,Spyrotecher -----
 echo      ------- Kali NetHunter Installer --------
 echo      ------------------v5.0-------------------
 echo      -----------------------------------------
@@ -48,10 +48,23 @@ i386="sh Busybox/i386/tools/installbusybox.sh"
 echo "Installing Nethunter Busybox..."
 
 case $arch in
-  amd64*) echo $amd64
-  ;;
   arm64*) echo $arm64
   ;;
   arm*) echo $arm
   ;;
+  amd64*) echo $amd64
+  ;;
   i386*) echo $i386
+
+echo "Busybox Sucessfully Installed!"
+sleep 2
+
+# Clean up
+echo "Cleaning up..."
+rm -r /data/local/nhsystem/kali-*
+sleep 2
+
+# End
+echo "Done"
+echo "Now open the NetHunter App and install Chroot"
+sleep 2
