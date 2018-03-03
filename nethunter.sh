@@ -39,23 +39,19 @@ sleep 5
 mount -o rw,remount /system
 mount -o rw,remount /data
 arch=$(getprop ro.product.cpu.abi)
-arm=$(cp /sdcard/install_nh/busybox/arm/busybox /system/xbin/busybox_nh)
-arm64=$(cp /sdcard/install_nh/busybox/arm64/busybox /system/xbin/busybox_nh)
-amd64=$(cp /sdcard/install_nh/busybox/amd64/busybox /system/xbin/busybox_nh)
-i386=$(cp /sdcard/install_nh/busybox/i386/busybox /system/xbin/busybox_nh)
 
 # Choosing Right Busybox
 echo "Installing Nethunter Busybox..."
 rm -rf /system/xbin/busybox_nh
 
 case $arch in
-  armea*) echo $arm
+  armea*) cp "/sdcard/install_nh/busybox/arm/busybox" /system/xbin/busybox_nh
   ;;
-  arm64*) echo $arm64
+  arm64*) cp "/sdcard/install_nh/busybox/arm64/busybox" /system/xbin/busybox_nh
   ;;
-  amd*) echo $amd64
+  amd*) cp "/sdcard/install_nh/busybox/amd64/busybox" /system/xbin/busybox_nh
   ;;
-  i3*) echo $i386
+  i3*) cp "/sdcard/install_nh/busybox/i386/busybox" /system/xbin/busybox_nh
 esac
 
 # Giving permissions and installing Busybox
