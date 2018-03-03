@@ -21,40 +21,51 @@ echo "################### NetHunter ####################"
 echo
 
 # Installing Apps
-pm install /sdcard/install_nh/Apks/BlueNMEA.apk
-pm install /sdcard/install_nh/Apks/cSploit-release.apk
-pm install /sdcard/install_nh/Apks/Drivedroid.apk
-pm install /sdcard/install_nh/Apks/Hackerskeyboard.apk
-pm install /sdcard/install_nh/Apks/OpenVPN.apk
-pm install /sdcard/install_nh/Apks/RFAnalyzer.apk
-pm install /sdcard/install_nh/Apks/RouterKeygen.apk
-pm install /sdcard/install_nh/Apks/Shodan.apk
-pm install /sdcard/install_nh/Apks/Term-nh.apk
-pm install /sdcard/install_nh/Apks/USBKeyboard.apk
-pm install /sdcard/install_nh/Apks/VNC-nh.apk
-pm install /sdcard/install_nh/Apks/nethunter.apk
+pm install /sdcard/install_nh/app/BlueNMEA.apk
+pm install /sdcard/install_nh/app/cSploit-release.apk
+pm install /sdcard/install_nh/app/Drivedroid.apk
+pm install /sdcard/install_nh/app/Hackerskeyboard.apk
+pm install /sdcard/install_nh/app/OpenVPN.apk
+pm install /sdcard/install_nh/app/RFAnalyzer.apk
+pm install /sdcard/install_nh/app/RouterKeygen.apk
+pm install /sdcard/install_nh/app/Shodan.apk
+pm install /sdcard/install_nh/app/Term-nh.apk
+pm install /sdcard/install_nh/app/USBKeyboard.apk
+pm install /sdcard/install_nh/app/VNC-nh.apk
+pm install /sdcard/install_nh/app/nethunter.apk
 sleep 5
 
 # Setting Variables
 mount -o rw,remount /system
 mount -o rw,remount /data
 arch=$(getprop ro.product.cpu.abi)
-amd64="sh Busybox/amd64/tools/installbusybox.sh"
-arm64="sh Busybox/arm64/tools/installbusybox.sh"
-arm="sh Busybox/arm/tools/installbusybox.sh"
-i386="sh Busybox/i386/tools/installbusybox.sh"
+arm=$(cp /sdcard/install_nh/busybox/arm/busybox /system/xbin/busybox_nh)
+arm64=$(cp /sdcard/install_nh/busybox/arm64/busybox /system/xbin/busybox_nh)
+amd64=$(cp /sdcard/install_nh/busybox/amd64/busybox /system/xbin/busybox_nh)
+i386=$(cp /sdcard/install_nh/busybox/i386/busybox /system/xbin/busybox_nh)
 
 # Choosing Right Busybox
 echo "Installing Nethunter Busybox..."
+rm -rf /system/xbin/busybox_nh
 
 case $arch in
+  armea*) echo $arm
+  ;;
   arm64*) echo $arm64
   ;;
-  arm*) echo $arm
+  amd*) echo $amd64
   ;;
-  amd64*) echo $amd64
-  ;;
-  i386*) echo $i386
+  i3*) echo $i386
+esac
+
+# Giving permissions and installing Busybox
+chmod 0755 /system/xbin/busybox_nh
+/system/xbin/busybox_nh --install -s /system/xbin
+
+[ -e /system/xbin/busybox ] || {
+	print "/system/xbin/busybox not found! Symlinking..."
+	ln -s /system/xbin/busybox_nh /system/xbin/busybox
+}
 
 echo "Busybox Sucessfully Installed!"
 sleep 2
