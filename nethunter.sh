@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/system/bin/sh
 
 echo      -----------------------------------------
 echo      ----- Made By:madScript,Spyrotecher -----
