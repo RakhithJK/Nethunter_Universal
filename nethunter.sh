@@ -25,6 +25,7 @@ pm install /sdcard/install_nh/app/BlueNMEA.apk
 pm install /sdcard/install_nh/app/cSploit-release.apk
 pm install /sdcard/install_nh/app/Drivedroid.apk
 pm install /sdcard/install_nh/app/Hackerskeyboard.apk
+pm install /sdcard/install_nh/app/nethunter.apk
 pm install /sdcard/install_nh/app/OpenVPN.apk
 pm install /sdcard/install_nh/app/RFAnalyzer.apk
 pm install /sdcard/install_nh/app/RouterKeygen.apk
@@ -32,7 +33,6 @@ pm install /sdcard/install_nh/app/Shodan.apk
 pm install /sdcard/install_nh/app/Term-nh.apk
 pm install /sdcard/install_nh/app/USBKeyboard.apk
 pm install /sdcard/install_nh/app/VNC-nh.apk
-pm install /sdcard/install_nh/app/nethunter.apk
 sleep 5
 
 # Setting Variables
