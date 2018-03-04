@@ -48,10 +48,6 @@ case $arch in
   armea*) cp "/sdcard/install_nh/busybox/arm/busybox" /system/xbin/busybox_nh
   ;;
   arm64*) cp "/sdcard/install_nh/busybox/arm64/busybox" /system/xbin/busybox_nh
-  ;;
-  amd*) cp "/sdcard/install_nh/busybox/amd64/busybox" /system/xbin/busybox_nh
-  ;;
-  i3*) cp "/sdcard/install_nh/busybox/i386/busybox" /system/xbin/busybox_nh
 esac
 
 # Giving permissions and installing Busybox
