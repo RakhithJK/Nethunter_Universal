@@ -45,9 +45,9 @@ echo "Installing Nethunter Busybox..."
 rm -rf /system/xbin/busybox_nh
 
 case $arch in
-  armea*) cp "/sdcard/install_nh/busybox/arm/busybox" /system/xbin/busybox_nh
-  ;;
   arm64*) cp "/sdcard/install_nh/busybox/arm64/busybox" /system/xbin/busybox_nh
+  ;;
+  arm*) cp "/sdcard/install_nh/busybox/arm/busybox" /system/xbin/busybox_nh
 esac
 
 # Giving permissions and installing Busybox
